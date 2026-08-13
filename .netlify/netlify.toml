@@ -1,0 +1,25 @@
+plugins = []
+headers = []
+redirects = []
+
+[functions]
+
+[functions."*"]
+
+[build]
+publish = "/private/tmp/claude-501/-Users-marijatarar-Documents-Codex-ApproveAndPray/9d66d4db-4fd3-4b4d-823a-3d2174eae031/scratchpad/appray-site"
+publishOrigin = "ui"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
