@@ -182,13 +182,40 @@
   .storelink .asb { height: 44px; width: auto; display: block; }
   .storelink:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: 6px; }
 
-  .postlist { list-style: none; padding: 0; margin: 34px 0 0; }
-  .postlist li { padding: 24px 0; border-top: 1px solid var(--hair); }
-  .postlist li:last-child { border-bottom: 1px solid var(--hair); }
-  .postlist a.t { color: var(--ink); text-decoration: none; font-weight: 800; font-size: 21px; line-height: 1.35; }
-  .postlist a.t:hover { color: var(--accent); }
-  .postlist .meta { display: block; color: var(--muted); font-size: 14px; margin-top: 8px; }
-  .postlist .dek { display: block; color: var(--muted); margin-top: 10px; }
+  .postlist { display: grid; gap: 16px; margin: 34px 0 0; padding: 0; list-style: none; }
+  .postcard {
+    display: block; padding: 26px 28px; text-decoration: none; color: inherit;
+    background: var(--surface); border: 1px solid var(--hair); border-radius: 16px;
+    transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+  }
+  .postcard:hover, .postcard:focus-visible {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(28, 26, 23, 0.07);
+  }
+  .postcard:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .postcard .kicker {
+    display: block; font-size: 12.5px; font-weight: 800; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 10px;
+  }
+  .postcard h2 {
+    margin: 0; font-size: 21px; line-height: 1.32; font-weight: 800; color: var(--ink);
+    /* The site's h2 is a small uppercase accent label; a headline is not that. */
+    text-transform: none; letter-spacing: -0.01em;
+    transition: color .18s ease;
+  }
+  .postcard:hover h2, .postcard:focus-visible h2 { color: var(--accent); }
+  .postcard .dek { display: block; color: var(--muted); margin-top: 10px; font-size: 15.5px; }
+  .postcard .more {
+    display: inline-flex; align-items: center; gap: 7px; margin-top: 16px;
+    font-size: 14px; font-weight: 700; color: var(--accent);
+  }
+  .postcard .more svg { transition: transform .18s ease; }
+  .postcard:hover .more svg, .postcard:focus-visible .more svg { transform: translateX(4px); }
+  @media (prefers-reduced-motion: reduce) {
+    .postcard, .postcard .more svg, .postcard h2 { transition: none; }
+    .postcard:hover, .postcard:focus-visible { transform: none; }
+  }
   .postmeta { color: var(--muted); font-size: 14px; margin: 0 0 34px; }
   article h2 { margin-top: 40px; }
   article blockquote { margin: 26px 0; padding: 4px 0 4px 20px; border-left: 3px solid var(--accent);
