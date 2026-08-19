@@ -1,4 +1,5 @@
-<title>Appray — Privacy Policy</title>
+<meta name="description" content="How Appray handles your ideas and your data, what it costs, what stays free, and where to get help.">
+<title>Appray — FAQ</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root {
@@ -176,6 +177,11 @@
   }
   .callout p { margin: 0; color: var(--muted); }
   .callout p b { color: var(--ink); }
+
+  .qlist { margin: 26px 0; padding: 0; list-style: none; }
+  .qlist li { padding: 16px 0 16px 0; border-top: 1px solid var(--hair); }
+  .qlist li:last-child { border-bottom: 1px solid var(--hair); }
+  .qlist b { display: block; color: var(--ink); margin-bottom: 6px; }
 </style>
 
 <div class="wrap">
@@ -184,91 +190,132 @@
   <span class="spacer"></span>
   <a class="link" href="../">Home</a>
   <a class="link" href="../blog/">Blog</a>
-  <a class="link" href="../faq/">FAQ</a>
+  <a class="link" href="../faq/" aria-current="page">FAQ</a>
   <a class="link" href="../support/">Support</a>
-  <a class="link" href="../privacy/" aria-current="page">Privacy</a>
+  <a class="link" href="../privacy/">Privacy</a>
   <a class="link" href="../terms/">Terms</a>
 </div>
 
-<h1>Privacy Policy</h1>
-  <p class="eff">Effective date: 14 August 2026</p>
+  <h1>FAQ</h1>
+  <p class="eff">Appray for iPhone and iPad</p>
 
-  <p class="lede">Appray is a local-first product-decision tool. Everything you type stays on your device. There is no account, no backend, and no AI service involved.</p>
-
-  <div class="pledges">
-    <div class="pledge"><b>No account</b><span>Nothing to sign up for.</span></div>
-    <div class="pledge"><b>No AI API</b><span>Answers never leave for an AI.</span></div>
-    <div class="pledge"><b>No tracking</b><span>Not across apps or sites.</span></div>
-    <div class="pledge"><b>On device</b><span>Stored locally, not on a server.</span></div>
-  </div>
+  <p class="lede">The questions that come up most often. If yours is not here, write to
+  <a href="mailto:support@appray.app" style="color:var(--accent);font-weight:600;text-decoration:none">support@appray.app</a> and it probably belongs on this page.</p>
 
   <section>
-    <h2>Data stored on device</h2>
-    <p>The app stores your project idea, selected answers, custom answers, feature scores, and generated report locally on your device. This data is used only to run the app — saving your progress and generating your report. It is not transmitted anywhere.</p>
+    <h2>The app</h2>
+    <ul class="qlist">
+      <li>
+        <b>Does it work offline?</b>
+        All of it. Appray contains no networking code at all — no requests, no web views,
+        nothing that opens a connection. There is no online mode, so there is nothing to
+        fall back from when you have no signal.
+      </li>
+      <li>
+        <b>Do I need an account?</b>
+        No. There is nothing to sign up for and nothing to sign in to.
+      </li>
+      <li>
+        <b>Does it use AI?</b>
+        No. Every verdict comes from scoring rules the app shows you, applied to the answers
+        you gave. Nothing is sent to a model, and the same answers produce the same report
+        every time.
+      </li>
+      <li>
+        <b>Which devices, and which languages?</b>
+        iPhone and iPad. Appray follows your device language and speaks English, German and
+        Russian. To use a different language just for Appray, open Settings → Appray →
+        Language on your device.
+      </li>
+    </ul>
 
-    <h2>No account</h2>
-    <p>Appray does not require an account. We do not ask for your name, email, or any sign-in.</p>
+    <h2>Your ideas, and your data</h2>
+    <ul class="qlist">
+      <li>
+        <b>Do you see what I type?</b>
+        No — and not because we promise not to look. There is no server to look at. The app
+        has no code that could send your answers anywhere, so nothing you write reaches us,
+        an AI service, or anyone else.
+      </li>
+      <li>
+        <b>Where is my data kept?</b>
+        On your device, in Appray's own storage. Your projects, answers, feature verdicts and
+        saved reports never leave it. There is no cloud copy and no backup held by us, which
+        cuts both ways: nobody can read it, and nobody can restore it. If you delete the app,
+        it is gone.
+      </li>
+      <li>
+        <b>Can I get my work out of the app?</b>
+        Yes. Any report can be copied or shared as Markdown from the report screen, and saved
+        reports stay in History until you delete them.
+      </li>
+      <li>
+        <b>Can I ask you for a copy of my data, or ask you to delete it?</b>
+        There is nothing here to send you or to erase. Your answers and reports never reach
+        us, so no copy of them exists on our side to hand over. Two things do reach us: an
+        email you send to support, and the ordinary server log this site's host records when
+        you visit. Your rights apply to both in full — the
+        <a href="../privacy/">privacy policy</a> says what they are and how to use them.
+      </li>
+      <li>
+        <b>Does this website track me?</b>
+        No. These pages are static HTML with no analytics, no cookies and no third-party
+        scripts of any kind. That is also why you have not been asked to accept anything.
+      </li>
+    </ul>
 
-    <h2>No AI service</h2>
-    <p>Your answers are never sent to an AI service. Reports are generated on your device from your own choices, transparent scoring rules, and local templates.</p>
+    <h2>Paying, and not paying</h2>
+    <ul class="qlist">
+      <li>
+        <b>Is it a subscription?</b>
+        No. Appray is free today and contains no in-app purchases. If it ever charges for
+        something, it will be a one-off purchase rather than a recurring one.
+      </li>
+      <li>
+        <b>What stays free?</b>
+        The full Build / Kill / Prove report, your saved report history, Markdown export and
+        starting a new quest. The report is not going behind a price later: charging for the
+        verdict would make every verdict look bought.
+      </li>
+      <li>
+        <b>So what would you charge for?</b>
+        Additions, not the thing you already have — running several ideas side by side, a
+        laid-out PDF of the report to send to a co-founder or an investor, and a comparison
+        between two runs of the same project showing which verdicts moved. None of that is
+        on sale yet.
+      </li>
+      <li>
+        <b>How would I get a purchase back on a new phone?</b>
+        There is nothing to buy yet, so there is nothing to restore. When there is, purchases
+        belong to the Apple Account that made them, not to the device: signing in with the
+        same Apple Account and using Restore Purchases brings them back.
+      </li>
+      <li>
+        <b>How do refunds work?</b>
+        Anything bought through the App Store is a transaction with Apple, and refunds go
+        through Apple at
+        <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.
+      </li>
+    </ul>
 
-    <h2>No backend storage</h2>
-    <p>In this version the app does not upload your project data to any server. There is no cloud sync.</p>
-
-    <h2>No tracking or analytics</h2>
-    <p>The app does not track you across other apps or websites, and includes no third-party analytics or advertising SDKs.</p>
-
-    <h2>Purchases</h2>
-    <p>Appray is currently free and contains no in-app purchases. If paid features are added in a future version, the transaction will be handled entirely by Apple through In-App Purchase — Appray never sees your payment details, and Apple's own privacy policy governs that transaction.</p>
-
-
-    <h2>Who is responsible</h2>
-    <p>The data controller for anything this policy covers is Mariia Tararova, Primorska 8, 51000 Rijeka,
-    Croatia — reachable at <a href="mailto:support@appray.app">support@appray.app</a>. Under the
-    EU Digital Services Act this contact information also appears on the App Store product page.</p>
-
-    <h2>The App Store transaction</h2>
-    <p>Downloading the app is a transaction with Apple: Apple processes your Apple Account, device and
-    download data as an independent controller under
-    <a href="https://www.apple.com/legal/privacy/">Apple&rsquo;s privacy policy</a>. That processing
-    happens before Appray ever runs, and none of it reaches us.</p>
-
-    <h2>Children</h2>
-    <p>Appray is a productivity tool for founders and makers. It collects no personal data and is not directed at children.</p>
-
-    <h2>Changes to this policy</h2>
-    <p>If this policy changes, the effective date above is updated and the change is
-    listed here, so you can tell whether the version you are reading differs from the
-    one you read last time. The previous wording stays available on request.</p>
-    <p class="q">14 Aug 2026 — added a section on your rights and what they can apply to.<br>
-    2 Aug 2026 — first version.</p>
+    <h2>Getting help</h2>
+    <ul class="qlist">
+      <li>
+        <b>How do I report a bug or ask something?</b>
+        Email <a href="mailto:support@appray.app">support@appray.app</a>. Replies come from
+        one person, in English, German or Russian, usually within a couple of days. For a bug,
+        include your device model, your iOS version and the Appray version, and add a
+        screenshot if you can — it saves a round of questions.
+      </li>
+      <li>
+        <b>Will Appray tell me whether my idea will work?</b>
+        No. Appray does not prove product-market fit and does not guarantee that an idea will
+        succeed. It turns your assumptions into clearer decisions and a shortlist of what to
+        test first. What you do with that is yours.
+      </li>
+    </ul>
   </section>
 
-  <hr class="rule" />
-
-  <section class="contact">
-    <h2>Your rights, and what they can apply to</h2>
-    <p>The app itself holds nothing we could give you or delete for you. Your answers,
-    verdicts and reports live on your device and never reach us, so there is no copy
-    here to request and no server to erase it from. If you want it gone, Appray has
-    a “Delete all my data” button under About, and deleting the app removes it too.</p>
-    <p>Two things do reach us, and your rights apply to both in full. If you email
-    support, we hold that correspondence. If you visit this site, our host records
-    an ordinary server log. For either of those you can ask what we have, ask for a
-    copy, ask us to correct or delete it, or object to us keeping it, by writing to
-    <a href="mailto:support@appray.app">support@appray.app</a>. We answer within a
-    month, as the GDPR requires. If you think we have handled it badly you can
-    complain to the Croatian supervisory authority, <a href="https://azop.hr/">AZOP</a>,
-    or to the authority where you live.</p>
-    <p>We will not ask you to prove who you are unless we genuinely cannot tell, which
-    for an email conversation is rare, and demanding identity documents to answer a
-    question about an email would collect more about you than the request itself.</p>
-
-    <h2>Contact</h2>
-    <p>Questions about privacy in Appray? Email <a href="mailto:support@appray.app">support@appray.app</a>.</p>
-  </section>
-
-  
   <footer>
     Appray — a no-AI Build / Kill / Prove decision tool for founders and makers.<br>
     Questions? <a href="mailto:support@appray.app" style="color:var(--accent);font-weight:600;text-decoration:none">support@appray.app</a>
