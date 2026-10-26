@@ -1,6 +1,6 @@
 <meta charset="utf-8">
-<meta name="description" content="People asked Appray for a reminder notification. I nearly said no because I assumed any notification meant data leaving the device. It doesn't, and the difference is worth knowing before you refuse a feature for the wrong reason.">
-<title>Notifications and the "nothing leaves your device" pledge — Appray</title>
+<meta name="description" content="Eleven emails asked Appray for a Face ID lock. I nearly built it before rereading what people actually described, which wasn't a stolen phone, and the fix that problem needed cost nothing to use and took an afternoon.">
+<title>People asked for a Face ID lock. That wasn't the actual problem. — Appray</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root {
@@ -242,89 +242,86 @@
   <a class="link" href="../../legal/">Legal</a>
 </div>
 
-  <h1>Notifications and the "nothing leaves your device" pledge</h1>
+  <h1>People asked for a Face ID lock. That wasn't the actual problem.</h1>
   <p class="postmeta">26 October 2026 · Mariia Tararova</p>
 
-  <p class="lede">Appray's privacy page says nothing leaves your device, not even to me. Nine
-  emails since August asked for the one feature that sounded, on its face, like it had to
-  break that sentence.</p>
+  <p class="lede">Eleven emails over four months asked Appray for the same feature: a Face ID
+  lock on the app. I nearly built exactly what they named before I reread what any of them had
+  actually described.</p>
 
   <article>
-  <p>The emails all wanted the same small thing. Appray gives a Prove verdict a two week
-  deadline, written about in an earlier post, and asks you to come back and check what actually
-  happened. People kept finishing that step and then, unsurprisingly, forgetting about it.
-  Could the app remind them.</p>
+  <p>Appray holds whatever you're working on, project names, the answers you gave in the
+  interview, the verdict it handed back. For some people that's a hobby idea. For a few it's
+  the next thing they're about to quit a job for, written down before they've told anyone. A
+  Face ID lock is a reasonable thing to want on that, and eleven separate people asking for it
+  over four months is more consistent agreement than most feature requests get from me.</p>
 
-  <p>My first answer, in my head, was no. A reminder is a notification. A notification needs a
-  server somewhere to know when to fire, which means a token identifying this phone sitting on
-  that server, which means something has left the device. I nearly wrote back nine near
-  identical replies saying the honest thing I believed, that this collided with the one
-  promise I am not willing to bend on.</p>
+  <p>I had the word "lock" in my head and went straight to the obvious design. iOS has a
+  LocalAuthentication framework built for exactly this, Face ID or your passcode as a fallback,
+  gate the app behind it the moment it opens. I'd got as far as sketching where the prompt would
+  sit before I did the thing I tell other people to do and actually went back through all eleven
+  emails properly instead of skimming them for the word I already expected to find.</p>
 
-  <p>I was about to close the request when I made myself check the actual mechanism instead of
-  the word. That is a cheap thing to do and I should do it more often before I say no to
-  anything.</p>
+  <h2>None of them described a stolen phone</h2>
 
-  <h2>Local and remote are not the same feature</h2>
+  <p>I'd assumed the scenario was the obvious one: phone lost or stolen, stranger gets in,
+  reads your business idea. But a lost phone is already locked by the device passcode before
+  Appray ever enters the picture, and if someone's device passcode is compromised, an extra
+  Face ID prompt on one app among forty isn't doing much additional work.</p>
 
-  <p>What I'd been picturing is remote push. That is the kind nearly every app uses for a
-  re-engagement nudge: your app registers with Apple's push service, gets back a device token,
-  hands that token to a server, and later that server tells Apple's servers to wake your app up
-  at a time of its choosing. Apple's own documentation on this is blunt about what that token
-  is for, and privacy researchers at the EFF have written at length about how much even the
-  metadata around a push, which app sent it and when, can reveal about you. That version really
-  would put something on a server. I was right to refuse that one.</p>
+  <p>What eight of the eleven emails actually described, once I read past the word "lock," was
+  handing an already unlocked phone to someone else for a few seconds. Showing a cofounder a
+  photo and watching them swipe one screen too far. A kid grabbing the phone to play a game and
+  landing on whatever was last open. Demoing something unrelated at a meetup with Appray sitting
+  in the app switcher from twenty minutes earlier, project name visible in the little preview
+  thumbnail iOS shows you mid-swipe.</p>
 
-  <p>What I had not separated out is local notifications, which are a different API doing a
-  different job. You ask iOS to remind you about something at a time you choose, iOS stores
-  that request on the device, and the operating system itself wakes the notification up later.
-  No token goes anywhere. No server exists to forget to delete anything from. The request never
-  leaves the phone because there is nowhere for it to go.</p>
+  <p>That is a completely different problem from the one I'd started designing for, and it was
+  sitting in my own inbox in plain English the whole time. I'd just read "lock" and gone looking
+  for the mechanism rather than the moment.</p>
 
-  <p>I had conflated the two because they produce the same banner on the lock screen. From the
-  outside they look identical. From the inside, one of them is a promise I keep and one of them
-  I would have broken on day one of building it.</p>
+  <h2>Face ID would have made this worse, not better</h2>
 
-  <h2>What I actually built</h2>
+  <p>Here's the part that stopped me cold. A Face ID gate on app open solves the stolen-phone
+  case I'd imagined and does nothing for the handed-over-phone case everyone was actually
+  describing, because in that scenario the phone is already open to Appray, or one swipe away
+  from it, in someone else's hand. Nobody re-locks an app mid-handover to ask their four year
+  old to re-authenticate before showing them a cartoon.</p>
 
-  <p>When a Prove verdict starts its two week clock, there is now a small toggle offering to
-  remind you. Turn it on and Appray schedules a local notification for fourteen days out, using
-  the same on device storage everything else already lives in. Turn it off and nothing is
-  scheduled, nothing recorded, nothing different from before this existed.</p>
+  <p>Worse, a prompt on every single open is friction every person pays on every ordinary use to
+  guard against a ten-second scenario that happens to a handful of people a handful of times a
+  year. I'd have shipped something that annoyed everyone daily and protected nobody at the exact
+  moment they needed it.</p>
 
-  <p>It took less time to build than it took me to write the nine replies I was drafting in my
-  head. Most of the work was not code. It was going back through Apple's framework
-  documentation slowly enough to be sure I had the local and remote cases right, because I did
-  not want to ship something and find out in a support email three months later that I had
-  gotten the one thing I care about most wrong.</p>
+  <h2>What actually fixes a two-second glance</h2>
 
-  <h2>The part I still have to be honest about</h2>
+  <p>The thing iOS shows in the app switcher is a screenshot it takes automatically the instant
+  you leave an app. Banking apps have dealt with this for years by swapping in a plain screen
+  the moment the app resigns active, so the screenshot the OS grabs shows that instead of your
+  balance. I did the same thing: the moment Appray goes to the background, it swaps the real
+  screen for the logo on a plain background, then swaps back the instant you return. The project
+  list and every project name in it are gone from the preview entirely, with nothing to unlock
+  and nothing to remember a passcode for.</p>
 
-  <p>Turning the reminder on asks iOS for notification permission, and that system prompt looks
-  exactly the same whether the app behind it is private or not. Somebody skimming "Appray would
-  like to send you notifications" after reading a privacy pledge on my website has every right
-  to be suspicious for a second. I rewrote the one line of in app text above that system prompt
-  three times trying to say, before the OS dialog even appears, what kind of reminder this is
-  and that declining it costs nothing.</p>
+  <p>It took an afternoon, most of it spent making the swap happen early enough that the
+  screenshot never catches the real screen mid-transition. No LocalAuthentication, no new
+  permission dialog, no daily friction. It covers the scenario eight of eleven people described
+  and does nothing for the scenario the other three mentioned explicitly, which was closer to
+  wanting a diary-style lock out of habit rather than a specific worry, and I told them honestly
+  that I'd solved for the common case and left the rest open.</p>
 
-  <p>And because Appray has no analytics, by design, I have no idea how many people actually
-  turn it on. I wrote an entire post about living with that blind spot and I am not going to
-  contradict it now because the number would be convenient to have. If the toggle is wrong,
-  someone will eventually tell me, the same way the nine people telling me they wanted it in the
-  first place is the only evidence I have that it was worth building at all.</p>
+  <h2>The actual lesson</h2>
 
-  <h2>The actual lesson, which has nothing to do with notifications</h2>
+  <p>The word someone uses to ask for a feature is their best guess at a mechanism, not a
+  description of the problem. "Lock it" is a solution already, borrowed from every other app
+  that offers one, and it arrives in your inbox sounding so complete that rereading it feels
+  unnecessary. I nearly built the thing eleven people asked for by name and it would have fixed
+  almost none of what they were actually worried about.</p>
 
-  <p>I nearly refused a feature nine people asked for because of a rule in my head that turned
-  out to describe a different feature than the one being requested. The pledge was never wrong.
-  My model of what a notification necessarily requires was wrong, and I had been carrying it
-  around uninspected for over a year of building this app.</p>
-
-  <p>The fix was not a clever workaround or a compromise on the privacy pledge. It was reading
-  one more page of documentation before writing a refusal I would have believed completely while
-  typing it. Any rule you hold firmly enough to say no on someone else's behalf is worth checking
-  against how the thing actually works at least once, before it costs you a feature that would
-  have cost the rule nothing.</p>
+  <p>The question that would have caught this earlier than it did is the one I now ask myself
+  before opening Xcode on anything requested by name: what were you doing, physically, in the
+  moment this mattered to you. Not what do you want. What were you doing. Four months is a long
+  time to go without asking that.</p>
 
   <div class="endnote">
     <b>Appray does this part for you</b>
